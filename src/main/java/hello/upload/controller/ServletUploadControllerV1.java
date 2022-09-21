@@ -1,3 +1,5 @@
+//  서블릿과파일업로드 1
+
 package hello.upload.controller;
 
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +26,7 @@ public class ServletUploadControllerV1 {
 
     @PostMapping("/upload")
     public String saveFileV1(HttpServletRequest request) throws ServletException, IOException {
-        log.info("request={}", request);
+        log.info("request={}", request); // request.getParts(): multipart/form-data 전송방식에서각각나누어진부분을받아서 확인할 수 있다.
 
         String itemName = request.getParameter("itemName");
         log.info("itemName={}", itemName);
