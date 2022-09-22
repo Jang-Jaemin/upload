@@ -1,3 +1,6 @@
+//  스프링고 파일 업로드
+//  스프링은 MultipartFile 이라는 인터페이스로 멀티파트 파일을 매우 편리하게 지원한다.
+
 package hello.upload.controller;
 
 import lombok.extern.slf4j.Slf4j;
@@ -43,3 +46,11 @@ public class SpringUploadController {
         return "upload-form";
     }
 }
+
+//  @RequestParam MultipartFile file
+//  업로드하는 HTML Form의 name에맞추어@RequestParam을적용하면된다.
+//  추가로 @ModelAttribute에서도MultipartFile을동일하게사용할수있다.
+
+//  MultipartFile 주요메서드
+//  file.getOriginalFilename(): 업로드파일명
+//  file.transferTo(...): 파일저장
