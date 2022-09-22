@@ -31,12 +31,12 @@ public class ItemController {
     private final ItemRepository itemRepository;
     private final FileStore fileStore;
 
-    @GetMapping("/items/new")
+    @GetMapping("/items/new") // 등록 폼을 보여준다.
     public String newItem(@ModelAttribute ItemForm form) {
         return "item-form";
     }
 
-    @PostMapping("/items/new")
+    @PostMapping("/items/new") // 폼의 데이터를 저장하고 보여주는 화면으로 리다이렉트 한다.
     public String saveItem(@ModelAttribute ItemForm form, RedirectAttributes redirectAttributes) throws IOException {
         UploadFile attachFile = fileStore.storeFile(form.getAttachFile());
         List<UploadFile> storeImageFiles = fileStore.storeFiles(form.getImageFiles());
@@ -53,7 +53,7 @@ public class ItemController {
         return "redirect:/items/{itemId}";
     }
 
-    @GetMapping("/items/{id}")
+    @GetMapping("/items/{id}") // 상품을 보여준다.
     public String items(@PathVariable Long id, Model model) {
         Item item = itemRepository.findById(id);
         model.addAttribute("item", item);
@@ -61,12 +61,12 @@ public class ItemController {
     }
 
     @ResponseBody
-    @GetMapping("/images/{filename}")
+    @GetMapping("/images/{filename}") // <img>태그를 조회할때 사용한다.
     public Resource downloadImage(@PathVariable String filename) throws MalformedURLException {
         return new UrlResource("file:" + fileStore.getFullPath(filename));
     }
 
-    @GetMapping("/attach/{itemId}")
+    @GetMapping("/attach/{itemId}")// 파일 다운로드 할 때 사용한다.
     public ResponseEntity<Resource> downloadAttach(@PathVariable Long itemId) throws MalformedURLException {
         Item item = itemRepository.findById(itemId);
         String storeFileName = item.getAttachFile().getStoreFileName();

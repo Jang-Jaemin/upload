@@ -1,3 +1,5 @@
+//  ItemRepository = 상품리포지토리
+
 package hello.upload.domain;
 
 import org.springframework.stereotype.Repository;

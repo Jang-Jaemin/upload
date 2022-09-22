@@ -1,3 +1,13 @@
+//  FileStore - 파일저장과관련된업무처리
+
+//  멀티파트파일을서버에저장하는역할을담당한다.
+
+//  createStoreFileName(): 서버내부에서 관리하는 파일명은 유일한 이름을 생성하는 UUID를 사용해서 충돌하지않도록한다.
+
+//  extractExt(): 확장자를 별도로 추출해서 서버내부에서 관리하는 파일명에도 붙여준다.
+//  예를들어서 고객이a.png라는 이름으로 업로드 하면 51041c62-86e4-4274-801d-614a7d994edb.png와 같이 저장한다.
+
+
 package hello.upload.file;
 
 import hello.upload.domain.UploadFile;
